@@ -2,11 +2,13 @@ package com.luv2code.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 //@Component("thatSillyCoach")
 @Component
-
 public class TennisCoach implements Coach {
    // private FortuneService fortuneService;
    @Autowired
@@ -15,6 +17,11 @@ public class TennisCoach implements Coach {
 
     public TennisCoach() {
         System.out.println("inside default constructor");
+    }
+
+    @PostConstruct
+    public void doMyStartStuff() {
+        System.out.println(">> tennisCoach :inside doMyStuff");
     }
 /* @Autowired
     public TennisCoach(FortuneService fortuneService) {
