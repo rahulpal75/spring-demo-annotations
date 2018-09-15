@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 //@Component("thatSillyCoach")
 @Component
@@ -22,6 +23,10 @@ public class TennisCoach implements Coach {
     @PostConstruct
     public void doMyStartStuff() {
         System.out.println(">> tennisCoach :inside doMyStuff");
+    }
+    @PreDestroy
+    public void doMyCleanUpStuff() {
+        System.out.println(">> tennisCoach :inside doMyCleanUpStuff");
     }
 /* @Autowired
     public TennisCoach(FortuneService fortuneService) {
