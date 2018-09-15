@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SwimCoach implements Coach {
-    @Autowired
+   /* @Autowired
     @Qualifier("happyFortuneService")
     private FortuneService fortuneService;
-    @Value("${foo.email}")
+   /* @Value("${foo.email}")
     private String email;
     @Value("${foo.team}")
     private String team;
@@ -34,5 +34,20 @@ public class SwimCoach implements Coach {
 
     public String getTeam() {
         return team;
+    }*/
+   private FortuneService fortuneService;
+
+    public SwimCoach(FortuneService fortuneService) {
+        this.fortuneService = fortuneService;
+    }
+
+    @Override
+    public String getDailyWorkout() {
+        return "Swim 1000 meter";
+    }
+
+    @Override
+    public String getDailyFortune() {
+        return fortuneService.getFortune();
     }
 }
